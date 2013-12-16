@@ -33,4 +33,31 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/images</name>
+			<type>2</type>
+			<locationURI>PARENT-4-PROJECT_LOC/LIB/js/DataTables-1.9.4/media/images</locationURI>
+		</link>
+		<link>
+			<name>WebContent/css/jquery.dataTables.css</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/LIB/js/DataTables-1.9.4/media/css/jquery.dataTables.css</locationURI>
+		</link>
+		<link>
+			<name>WebContent/js/jquery.dataTables.js</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/LIB/js/DataTables-1.9.4/media/js/jquery.dataTables.js</locationURI>
+		</link>
+		<link>
+			<name>WebContent/js/jquery.dataTables.min.js</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/LIB/js/DataTables-1.9.4/media/js/jquery.dataTables.min.js</locationURI>
+		</link>
+		<link>
+			<name>WebContent/js/jquery.js</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/LIB/js/DataTables-1.9.4/media/js/jquery.js</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
