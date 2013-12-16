@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+    <service name="HelloWorldWSDD" provider="java:RPC">
+        <parameter name="className" value="com.truth99.webservice.axis.HelloWorldWSDD" />
+        <!-- * 代表所有的方法都暴露 -->
+        <parameter name="allowedMethods" value="*" />
+        <parameter name="scope" value="request" />
+    </service>
+</deployment>

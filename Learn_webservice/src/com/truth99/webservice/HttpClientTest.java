@@ -22,19 +22,6 @@ public class HttpClientTest {
 		User u = (User) JSONObject.toBean(array,User.class);
 		System.out.println(User.class);
 		System.out.println(u);
-//		try {
-//			URL yahoo = new URL("http://localhost:8082/ido/task/all?uid=9");
-//		    BufferedReader in = new BufferedReader(new InputStreamReader(yahoo.openStream()));
-//		    String inputLine;
-//		    while ((inputLine = in.readLine()) != null){
-//		    	System.out.println(inputLine);
-//		    }
-//		    in.close();
-//		} catch (MalformedURLException e) {
-//			e.printStackTrace();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
 		
 		String getUrl = "http://localhost:8082/ido/task/alls?uid=9";
 		System.out.println(HttpClientUtils.doGet(getUrl,"gb2312"));

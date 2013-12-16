@@ -1,0 +1,14 @@
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" 
+
+xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+<handler type="java:org.apache.axis.handlers.http.URLMapper" name="URLMapper"/>
+    <service name="HelloWorldWSDD" provider="java:RPC">
+        <parameter name="className" value="com.truth99.webservice.axis.HelloWorldWSDD"/>
+        <parameter name="allowedMethods" value="*"/>
+    </service>
+<transport name="http">
+  <requestFlow>
+    <handler type="URLMapper"/>
+  </requestFlow>
+</transport>
+</deployment>
