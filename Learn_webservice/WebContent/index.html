@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>跳转测试</title>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$.post(
+	'http://uhz000396.chinaw3.com:9527/remoting/smsService.rpc',
+	function(data){
+		console.log(data);
+	}
+);
+// 	location.href = "http://localhost:8081/webpage/Summarize.jsp?vproductid=3005659&vplatformid=7";
+</script>
+</head>
+<body>
+<a href="http://localhost:8081/servlet/ApiTestServlet?productid=3005659">
+	dddd
+</a>
+</body>
+</html>
