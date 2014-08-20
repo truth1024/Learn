@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true">
 
+	<property name="log.base" value="logs" />
   	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -8,6 +9,67 @@
       		<pattern>logback-test %d{HH:mm:ss} [%thread] %-6level %-30logger{36} -- %msg%n</pattern>
     	</encoder>
   	</appender>
+
+	<appender name="timerollinglog" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <Encoding>UTF-8</Encoding>  
+        <File>${log.base}/timerollinglog.log</File>  
+		<!-- 时间滚动策略 根据%d中的格式化最小单位进行周期滚动 如：yyyyMM为每月滚动一次，yyyyww为每周滚动一次-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+            <FileNamePattern>${log.base}/timerollinglog_%d{yyyyMMddHHmm}.log</FileNamePattern>  
+        </rollingPolicy>
+        <encoder>
+	      <pattern>%msg%n</pattern>
+	    </encoder>
+    </appender>
+    
+	<!-- appender中必须包含rollingPolicy（滚动策略）元素和triggeringPolicy（触发策略）元素。 -->
+	<!-- 由于TimeBasedRollingPolicy类将上述两个接口都已实现，因此不需要triggeringPolicy元素 -->
+	<appender name="fixedwindowrollinglog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}/fixedwindowrollinglog.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${log.base}/fixedwindowrollinglog_%i.log</FileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>3</maxIndex>
+		</rollingPolicy>
+		
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+	      <maxFileSize>1KB</maxFileSize>
+	    </triggeringPolicy>
+		
+		<encoder>
+	      <pattern>%msg%n</pattern>
+	    </encoder>
+	</appender>
+
+	<!-- 	时间和文件大小双重策略 -->
+	<appender name="timeOrSizeRollingLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.base}/timeOrSizeRolling.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}/timeOrSizeRollingLog_%d{yyyyMMddHHmm}_%i.log</FileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>1KB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		
+		<encoder>
+	      <pattern>%msg%n</pattern>
+	    </encoder>
+	</appender>
+
+	<logger name="timeOrSizeRollingLog" additivity="false">  
+        <level value="DEBUG" />  
+        <appender-ref ref="timeOrSizeRollingLog" />  
+    </logger>
+
+	<logger name="fixedwindowrollinglog" additivity="false">  
+        <level value="DEBUG" />  
+        <appender-ref ref="fixedwindowrollinglog" />  
+    </logger>
+
+	<logger name="timerollinglog" additivity="false">  
+        <level value="DEBUG" />  
+        <appender-ref ref="timerollinglog" />  
+    </logger>
 
   	<root level="debug">
    		<appender-ref ref="STDOUT" />
